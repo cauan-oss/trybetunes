@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class Loading extends Component {
   render() {
-    return(
+    return (
       <div>Carregando...</div>
     );
   }

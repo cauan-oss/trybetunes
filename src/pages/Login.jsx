@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { link } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 
 class Login extends Component {
@@ -25,12 +24,12 @@ class Login extends Component {
     });
   };
 
-  redirectNome = async () => { 
+  redirectNome = async () => {
     const { history } = this.props;
-    const { nome, isLoading } = this.state;
+    const { nome } = this.state;
     this.setState({ isLoading: true });
     await createUser({ name: nome });
-    this.setState({ isLoading: false});
+    this.setState({ isLoading: false });
     history.push('/search');
   };
 
