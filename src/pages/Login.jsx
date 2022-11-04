@@ -35,7 +35,7 @@ class Login extends Component {
   };
 
   render() {
-    const { nome, isValidButton, isLoading} = this.state;
+    const { nome, isValidButton, isLoading } = this.state;
     return (
       <div data-testid="page-login">
         { isLoading ? <p>Carregando...</p>
