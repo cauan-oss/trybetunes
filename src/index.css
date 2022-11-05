@@ -17,3 +17,19 @@ code {
   display: flex;
   justify-content: center;
 }
+
+
+#artista {
+  background-color: rgb(108, 137, 97);
+}
+
+#titulo {
+  font-size: 25px;
+}
+
+#resultados {
+  display: block;
+  padding: 25px;
+  font-size: 25px;
+  
+}
