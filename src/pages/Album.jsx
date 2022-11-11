@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
@@ -7,7 +8,6 @@ class Album extends Component {
   constructor() {
     super();
     this.state = {
-      /* musics: '', */
       testMusic: [],
       isLoading: false,
       albumInfo: {},
@@ -31,7 +31,7 @@ class Album extends Component {
   }
 
   render() {
-    const { testMusic, musics, isLoading, albumInfo } = this.state;
+    const { testMusic, isLoading, albumInfo } = this.state;
     console.log(testMusic);
     if (isLoading) return <p>Carregando...</p>;
     return (
@@ -46,7 +46,11 @@ class Album extends Component {
 
           { testMusic.map((mix) => (
             <li key={ mix.id }>
-              <MusicCard trackName={ mix.trackName } previewUrl={ mix.previewUrl } />
+              <MusicCard
+                trackName={ mix.trackName }
+                previewUrl={ mix.previewUrl }
+                mix={ mix }
+              />
             </li>
 
           )) }
@@ -55,5 +59,13 @@ class Album extends Component {
     );
   }
 }
+
+Album.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default Album;
