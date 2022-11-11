@@ -24,7 +24,6 @@ class Album extends Component {
       artist: info.artistName,
       nameAlbum: info.collectionName,
     };
-    console.log(info);
     this.setState({ testMusic: test.slice(1),
       isLoading: false,
       albumInfo: objQualquer });
@@ -32,7 +31,6 @@ class Album extends Component {
 
   render() {
     const { testMusic, isLoading, albumInfo } = this.state;
-    console.log(testMusic);
     if (isLoading) return <p>Carregando...</p>;
     return (
       <div data-testid="page-album">

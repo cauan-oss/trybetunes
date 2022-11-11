@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 
 class Login extends Component {
@@ -38,29 +39,36 @@ class Login extends Component {
     return (
       <div data-testid="page-login">
         { isLoading ? <p>Carregando...</p>
-          : (<label htmlFor="user">
-            <span>nome</span>
-            <input
-              value={ nome }
-              onChange={ this.onInputChange }
-              name="nome"
-              id="user"
-              data-testid="login-name-input"
-              type="text"
-            />
-            <button
-              data-testid="login-submit-button"
-              disabled={ isValidButton }
-              onClick={ this.redirectNome }
-              type="button"
-            >
-              Entrar
+          : (
+            <label htmlFor="user">
+              <span>nome</span>
+              <input
+                value={ nome }
+                onChange={ this.onInputChange }
+                name="nome"
+                id="user"
+                data-testid="login-name-input"
+                type="text"
+              />
+              <button
+                data-testid="login-submit-button"
+                disabled={ isValidButton }
+                onClick={ this.redirectNome }
+                type="button"
+              >
+                Entrar
 
-            </button>
-          </label>)}
+              </button>
+            </label>)}
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;
