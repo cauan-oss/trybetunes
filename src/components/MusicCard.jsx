@@ -8,6 +8,7 @@ class MusicCard extends Component {
     this.state = {
       check: false,
       isLoading: false,
+      nomeDo: [],
     };
   }
 
@@ -21,24 +22,20 @@ class MusicCard extends Component {
   }
 
   addCheck = async (event) => {
+    console.log(event);
     const { mix } = this.props;
-    if (event.target.checked) {
-      this.setState({
-        check: true,
-        isLoading: true,
-      });
-      await addSong(mix);
-      this.setState({ isLoading: false });
-    } else {
-      this.setState({ check: false, isLoading: true });
-    }
-    await removeSong(mix);
+    this.setState({
+      check: true,
+      isLoading: true,
+    });
+    await addSong(mix);
     this.setState({ isLoading: false });
   };
 
   render() {
     const { check, isLoading } = this.state;
     const { trackName, previewUrl, mix } = this.props;
+    const qualqueNome = localStorage.getItem('favorite_songs');
     return (
       <div>
         <p>{ trackName }</p>
@@ -56,7 +53,7 @@ class MusicCard extends Component {
             <input
               data-testid={ `checkbox-music-${mix.trackId}` }
               onChange={ this.addCheck }
-              checked={ check }
+              checked={ qualqueNome.includes(mix.trackId) }
               name="check"
               id={ mix.trackName }
               type="checkbox"
